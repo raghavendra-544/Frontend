@@ -17,12 +17,12 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
     useEffect(()=>{
-        fetch('https://fashion-mart-backend.onrender.com/allproducts')
+        fetch('http://localhost:3000/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch('https://fashion-mart-backend.onrender.com/getcart',{
+            fetch('http://localhost:3000/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -39,7 +39,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
         if(localStorage.getItem('auth-token')){
-            fetch('https://fashion-mart-backend.onrender.com/addtocart',{
+            fetch('http://localhost:3000/addtocart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -56,7 +56,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) - 1 }));
         if(localStorage.getItem('auth-token')){
-            fetch('https://fashion-mart-backend.onrender.com/removefromcart',{
+            fetch('http://localhost:3000/removefromcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',

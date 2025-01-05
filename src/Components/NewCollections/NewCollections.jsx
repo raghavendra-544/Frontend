@@ -6,7 +6,7 @@ const NewCollections = () => {
   const [new_collection,setNew_collection] = useState([]);
 
   useEffect(()=>{
-    fetch('https://fashion-mart-backend.onrender.com/newcollections')
+    fetch('http://localhost:3000/newcollections')
     .then((response)=>response.json())
   .then((data)=>setNew_collection(data));
   },[])
